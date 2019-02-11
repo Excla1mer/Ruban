@@ -23,14 +23,16 @@ int main()
 		{
 			if(j-i<0)
 			{
-				t=a[i][0]/a[0][0];
-				for(int z=0;z<n+1;z++)
+				t=a[i][j]/a[j][j];
+				cout<<t<<" ";
+				for(int z=j;z<n+1;z++)
 				{
-					a[i][z]=a[i][z]-(a[0][z]*t);
+					a[i][z]=a[i][z]-(a[j][z]*t);
 				}
 			}	
 		}
 	}
+	cout<<"\n";
 	for(i=0;i<n;i++)
 	{
 		for(j=0;j<n+1;j++)
