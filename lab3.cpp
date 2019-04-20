@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <math.h>
+//***************************************************
 using namespace std;
 float E,a,b,c,e,a1,b1,x1,x2;
 float F(float x)
@@ -80,3 +81,4 @@ int main(){
 	cout<<c<<endl;;
 	return 0;
 }
+
