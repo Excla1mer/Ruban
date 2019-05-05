@@ -3,7 +3,7 @@
 using namespace std;
 
 
-double T=2;
+double T=5;
 int n=4;
 double x[4]={1,3,7,9};
 double y[4]={2,6,-2,6};
@@ -76,9 +76,12 @@ int main()
 		cout<<M[i]<<"\t";
 	}
 	cout<<endl;
-	S1=(M[r-1]*pow((x[r]-T),3))/(6*h[r])
-	S=+(M[r]*pow((T-x[r-1]),3)/(6*h[r]))+(y[r-1]-((M[r-1]*h[r]*h[r])/6))*((x[r]-T)/h[r])+(y[r]-(M[r]*h[r]*h[r])/6)*(T-x[r-1])/h[i];
-	cout<<S<<endl;
+	S1=(M[r-1]*pow((x[r]-T),3))/(6*h[r]);
+	S2=(M[r]*pow((T-x[r-1]),3)/(6*h[r]));
+	S3=(y[r-1]-((M[r-1]*h[r]*h[r])/6))*((x[r]-T)/h[r]);
+	S4=(y[r]-((M[r]*h[r]*h[r])/6))*((T-x[r-1])/h[r]);
+	S=S1+S2+S3+S4;
+	cout<<S1<<"+"<<S2<<"+"<<S3<<"+"<<S4<<" ="<<S<<endl;
 }
 
 double Gays(int n)
