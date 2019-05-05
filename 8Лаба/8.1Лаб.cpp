@@ -1,4 +1,6 @@
 #include <iostream>
+#include <graphics.h>
+#include <conio.h>
 #include <math.h>
 using namespace std;
 
@@ -22,6 +24,7 @@ double Gays(int n);
 
 int main()
 {
+	initwindow(800,600);
 	int i,r,j;
 	for(i=0;i<n-1;i++)
 	{
@@ -82,6 +85,15 @@ int main()
 	S4=(y[r]-((M[r]*h[r]*h[r])/6))*((T-x[r-1])/h[r]);
 	S=S1+S2+S3+S4;
 	cout<<S1<<"+"<<S2<<"+"<<S3<<"+"<<S4<<" ="<<S<<endl;
+	getch();
+	setcolor(12);
+	moveto(x[0],y[0]);
+	lineto(x[1],y[1]);
+	lineto(x[2],y[2]);
+	lineto(x[3],y[3]);
+	putpixel(T,S,9);
+	//lineto(T+0.001,S+0.001);
+	closegraph();
 }
 
 double Gays(int n)
