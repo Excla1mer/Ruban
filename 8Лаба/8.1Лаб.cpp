@@ -1,11 +1,29 @@
 #include <iostream>
-#include <graphics.h>
+#include "graphics.h"
 #include <conio.h>
 #include <math.h>
 using namespace std;
 
+double Left=10;
+double Top=10;
+double Width=800;
+double Height=600;
+double x_min=-5;
+double x_max=15;
+double y_min=-5;
+double y_max=15;
 
-double T=5;
+double Xs(double x)
+{
+	return (Left+(Width/(x_max-x_min))*(x-x_min));
+}
+
+double Ys(double y)
+{
+	return (Top+Height-(Height/(y_max-y_min))*(y-y_min));
+}
+
+double T=2;
 int n=4;
 double x[4]={1,3,7,9};
 double y[4]={2,6,-2,6};
@@ -85,14 +103,14 @@ int main()
 	S4=(y[r]-((M[r]*h[r]*h[r])/6))*((T-x[r-1])/h[r]);
 	S=S1+S2+S3+S4;
 	cout<<S1<<"+"<<S2<<"+"<<S3<<"+"<<S4<<" ="<<S<<endl;
-	getch();
 	setcolor(12);
-	moveto(x[0],y[0]);
-	lineto(x[1],y[1]);
-	lineto(x[2],y[2]);
-	lineto(x[3],y[3]);
-	putpixel(T,S,9);
-	//lineto(T+0.001,S+0.001);
+	moveto(Xs(x[0]),Ys(y[0]));
+	lineto(Xs(x[1]),Ys(y[1]));
+	lineto(Xs(x[2]),Ys(y[2]));
+	lineto(Xs(x[3]),Ys(y[3]));
+	putpixel(Xs(T),Ys(S),9);
+	//lineto(T+0.001,(S+0.001));
+	getch();
 	closegraph();
 }
 
