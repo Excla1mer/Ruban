@@ -1,7 +1,27 @@
 #include <iostream>
+#include "graphics.h"
+#include <conio.h>
 #include <math.h>
 using namespace std;
 
+double Left=10;
+double Top=10;
+double Width=800;
+double Height=600;
+double x_min=-5;
+double x_max=15;
+double y_min=-5;
+double y_max=15;
+
+double Xs(double x)
+{
+	return (Left+(Width/(x_max-x_min))*(x-x_min));
+}
+
+double Ys(double y)
+{
+	return (Top+Height-(Height/(y_max-y_min))*(y-y_min));
+}
 
 double T=2;
 int n=4;
@@ -12,12 +32,17 @@ double C[10][10];
 double M[4];
 double d[4];
 double S;
+double S1;
+double S2;
+double S3;
+double S4;
 bool f=true;
 
 double Gays(int n);
 
 int main()
 {
+	initwindow(800,600);
 	int i,r,j;
 	for(i=0;i<n-1;i++)
 	{
@@ -72,9 +97,21 @@ int main()
 		cout<<M[i]<<"\t";
 	}
 	cout<<endl;
-
-	S=(M[r-1]*pow((x[r]-T),3))/(6*h[r])+(M[r]*pow((T-x[r-1]),3)/(6*h[r]))+(y[r-1]-((M[r-1]*h[r]*h[r])/6))*((x[r]-T)/h[r])+(y[r]-(M[r]*h[r]*h[r])/6)*(T-x[r-1])/h[i];
-	cout<<S<<endl;
+	S1=(M[r-1]*pow((x[r]-T),3))/(6*h[r]);
+	S2=(M[r]*pow((T-x[r-1]),3)/(6*h[r]));
+	S3=(y[r-1]-((M[r-1]*h[r]*h[r])/6))*((x[r]-T)/h[r]);
+	S4=(y[r]-((M[r]*h[r]*h[r])/6))*((T-x[r-1])/h[r]);
+	S=S1+S2+S3+S4;
+	cout<<S1<<"+"<<S2<<"+"<<S3<<"+"<<S4<<" ="<<S<<endl;
+	setcolor(12);
+	moveto(Xs(x[0]),Ys(y[0]));
+	lineto(Xs(x[1]),Ys(y[1]));
+	lineto(Xs(x[2]),Ys(y[2]));
+	lineto(Xs(x[3]),Ys(y[3]));
+	putpixel(Xs(T),Ys(S),9);
+	//lineto(T+0.001,(S+0.001));
+	getch();
+	closegraph();
 }
 
 double Gays(int n)
