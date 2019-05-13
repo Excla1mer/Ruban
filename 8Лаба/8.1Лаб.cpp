@@ -23,7 +23,7 @@ double Ys(double y)
 	return (Top+Height-(Height/(y_max-y_min))*(y-y_min));
 }
 
-double T=2;
+//double T=2;
 int n=4;
 double x[4]={1,3,7,9};
 double y[4]={2,6,-2,6};
@@ -44,72 +44,69 @@ int main()
 {
 	initwindow(800,600);
 	int i,r,j;
-	for(i=0;i<n-1;i++)
+	setcolor(12);
+	moveto(Xs(x[0]),Ys(y[0]));
+	for(double T=1;T<9;T=T+1)
 	{
-		if(x[i]<T&&x[i+1]>T)
+		for(i=0;i<n-1;i++)
 		{
-			r=i+1;
-		}	
-	}
-	for(i=1;i<n;i++)
-	{
-		h[i]=x[i]-x[i-1];
-	}
-	//Zapolnenie Matrichi C[i][j]
-	for(i=1;i<n-1;i++)
-	{
-		d[i]=((y[i+1]-y[i])/h[i+1])-((y[i]-y[i-1])/h[i]);
-		for(j=1;j<n-1;j++)
-		{
-			if(i==j)
+			if(x[i]<T&&x[i+1]>T)
 			{
-				C[i][j]=(h[i]+h[i+1])/3;
-			}
-			else{
-				if(j==i+1)
+				r=i+1;
+			}	
+		}
+		for(i=1;i<n;i++)
+		{
+			h[i]=x[i]-x[i-1];
+		}
+		//Zapolnenie Matrichi C[i][j]
+		for(i=1;i<n-1;i++)
+		{
+			d[i]=((y[i+1]-y[i])/h[i+1])-((y[i]-y[i-1])/h[i]);
+			for(j=1;j<n-1;j++)
+			{
+				if(i==j)
 				{
-					C[i][j]=(h[i+1])/6;
+					C[i][j]=(h[i]+h[i+1])/3;
 				}
 				else{
-					if(j==i-1){
-						C[i][j]=h[i]/6;
+					if(j==i+1)
+					{
+						C[i][j]=(h[i+1])/6;
 					}
 					else{
-						C[i][j]=0;
+						if(j==i-1){
+							C[i][j]=h[i]/6;
+						}
+						else{
+							C[i][j]=0;
+						}
 					}
 				}
 			}
 		}
+		for(i=0;i<n;i++)
+		{
+			cout<<h[i]<<"\t";
+		}
+		cout<<endl;
+		for(i=0;i<n;i++)
+		{
+			cout<<d[i]<<"|"<<y[i]<<"|"<<"\t";
+		}
+		cout<<endl;
+		Gays(2);
+		for(i=0;i<n;i++)
+		{
+			cout<<M[i]<<"\t";
+		}
+		S1=(M[r-1]*pow((x[r]-T),3))/(6*h[r]);
+		S2=(M[r]*pow((T-x[r-1]),3)/(6*h[r]));
+		S3=(y[r-1]-((M[r-1]*h[r]*h[r])/6))*((x[r]-T)/h[r]);
+		S4=(y[r]-((M[r]*h[r]*h[r])/6))*((T-x[r-1])/h[r]);
+		S=S1+S2+S3+S4;
+		lineto(Xs(T),Ys(S));
 	}
-	for(i=0;i<n;i++)
-	{
-		cout<<h[i]<<"\t";
-	}
-	cout<<endl;
-	for(i=0;i<n;i++)
-	{
-		cout<<d[i]<<"|"<<y[i]<<"|"<<"\t";
-	}
-	cout<<endl;
-	Gays(2);
-	for(i=0;i<n;i++)
-	{
-		cout<<M[i]<<"\t";
-	}
-	cout<<endl;
-	S1=(M[r-1]*pow((x[r]-T),3))/(6*h[r]);
-	S2=(M[r]*pow((T-x[r-1]),3)/(6*h[r]));
-	S3=(y[r-1]-((M[r-1]*h[r]*h[r])/6))*((x[r]-T)/h[r]);
-	S4=(y[r]-((M[r]*h[r]*h[r])/6))*((T-x[r-1])/h[r]);
-	S=S1+S2+S3+S4;
-	cout<<S1<<"+"<<S2<<"+"<<S3<<"+"<<S4<<" ="<<S<<endl;
-	setcolor(12);
-	moveto(Xs(x[0]),Ys(y[0]));
-	lineto(Xs(x[1]),Ys(y[1]));
-	lineto(Xs(x[2]),Ys(y[2]));
-	lineto(Xs(x[3]),Ys(y[3]));
-	putpixel(Xs(T),Ys(S),9);
-	//lineto(T+0.001,(S+0.001));
 	getch();
 	closegraph();
 }
