@@ -3,7 +3,7 @@
 using namespace std;
 double F(double x)
 {
-	return (1/x);
+	return pow(x, 3);
 }
 double Fact(double n)
 {
@@ -74,7 +74,7 @@ double Niuton(double M[][100],double x,double w,double h)
 }
 int main()
 {
-	double a=1,b=4,h=0.5,n=5,w=(b-a)/h,x=1.44,z,x1=a;
+	double a=-2,b=0,h=0.25,n=2,w=(b-a)/h,x=1.44,z,x1=a;
 	double Matrix[100][100];
 	int i,j;
 	for(i=0;i<=w;i++)
@@ -103,10 +103,10 @@ int main()
 			if(Matrix[i][j]==0)
 			{
 				//cout<<"|";
-				printf("|%2.5f\t",Matrix[i][j]);
+				printf("|%2.4f\t",Matrix[i][j]);
 			}
 			else
-				printf("|%2.5f\t",Matrix[i][j]);
+				printf("|%2.4f\t",Matrix[i][j]);
 				//cout<<"|"<<Matrix[i][j]<<"\t|";
 		}
 		cout<<endl;

@@ -57,7 +57,7 @@ double simpson_method(double a, double b, double step, double e) {
 		step /= 4;
 		delete[]x;
 		iter_S++;
-		cout << result - result_prev << endl;
+		//cout << result - result_prev << endl;
 	} while (fabs(result - result_prev) >= e); 
 	return result;
 }
