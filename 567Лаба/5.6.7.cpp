@@ -74,8 +74,8 @@ double Niuton(double M[][100],double x,double w,double h)
 }
 int main()
 {
-	double a=-2,b=0,h=0.25,n=2,w=(b-a)/h,x=1.44,z,x1=a;
-	double Matrix[100][100];
+	double a=1,b=4,h=0.5,n=5,w=(b-a)/h,x=1.44,z,x1=a;
+	double Matrix[100][100];	
 	int i,j;
 	for(i=0;i<=w;i++)
 	{
