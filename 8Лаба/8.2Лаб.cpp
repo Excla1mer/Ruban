@@ -189,13 +189,9 @@ double Gays(int n)
 		Mat_x[i]=a[i][n]/a[i][i];
 		
 		for(j=n-1;j>i;j--)
-		{
-			
-			Mat_x[i]=Mat_x[i]-a[i][j]*Mat_x[j]/a[i][i];
-			
-			
-		}
-		
+		{	
+			Mat_x[i]=Mat_x[i]-a[i][j]*Mat_x[j]/a[i][i];	
+		}	
 	}
 	M[n]=Mat_x[n-1];
 	M[n-1]=Mat_x[n-2];
